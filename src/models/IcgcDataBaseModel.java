@@ -29,23 +29,24 @@ public class IcgcDataBaseModel {
     private final String USER_AGENT = "Mozilla/5.0";
 
     private IcgcDataBaseController controller;
-    /**
+
+    /*
      * The GET request path for retreaving all projects
      * on ICGC
      */
     private String httpRequestUrlProjects = "https://dcc.icgc.org:443/api/v1/projects?filters=%7B%7D&&&sort=totalLiveDonorCount&order=desc";
 
-    /**
+    /*
      * The GET request path for retreving all donors from one
      * project
      */
     private String httpRequestUrlDonorsAll = "";
 
-    /**
+    /*
      * The GET request path for retreaving information of a specific
      * donor
      */
-    private String httpRequestUrlDonor = "";
+    private String httpRequestUrlDonor = "https://dcc.icgc.org:443/api/v1/donors/";
 
 
     /**
@@ -55,8 +56,8 @@ public class IcgcDataBaseModel {
      * @throws IOException
      * @throws JsonParseException
      */
-    public JsonObject getProjectsFromICGC() throws IOException, JsonParseException {
-        this.request = new HttpGet(httpRequestUrlProjects);
+    public JsonObject getInfoFromICGC(String httpRequestUrl) throws IOException, JsonParseException {
+        this.request = new HttpGet(httpRequestUrl);
         this.request.addHeader("User-Agent", USER_AGENT);
 
         HttpResponse response = client.execute(this.request);
@@ -77,6 +78,7 @@ public class IcgcDataBaseModel {
         return projectJSON;
     }
 
+
     /**
      *
      * @param jsonObject
@@ -94,6 +96,10 @@ public class IcgcDataBaseModel {
         System.out.println(idList.get(0));
 
         return idList;
+    }
+
+    public List<String> extractSampleInfoFromJson(JsonArray object) throws JsonParseException{
+
     }
 
 
