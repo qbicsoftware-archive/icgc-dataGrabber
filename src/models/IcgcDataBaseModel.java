@@ -1,11 +1,8 @@
 package models;
 
-
 import com.google.gson.*;
-import controllers.IcgcDataBaseController;
-
+import com.sun.xml.internal.bind.v2.TODO;
 import org.apache.http.HttpResponse;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -22,13 +19,11 @@ import java.util.List;
  */
 public class IcgcDataBaseModel {
 
-    HttpClient client = HttpClientBuilder.create().build();
+    private HttpClient client = HttpClientBuilder.create().build();
 
-    HttpGet request = new HttpGet();
+    private HttpGet request = new HttpGet();
 
     private final String USER_AGENT = "Mozilla/5.0";
-
-    private IcgcDataBaseController controller;
 
     /*
      * The GET request path for retreaving all projects
@@ -73,9 +68,9 @@ public class IcgcDataBaseModel {
             jsonString.append(currLine);
         }
 
-        JsonObject projectJSON = (JsonObject) jsonParser.parse(jsonString.toString());
+        JsonObject jsonObject = (JsonObject) jsonParser.parse(jsonString.toString());
 
-        return projectJSON;
+        return jsonObject;
     }
 
 
@@ -90,16 +85,69 @@ public class IcgcDataBaseModel {
 
         for(JsonElement element : jsonObject.get("hits").getAsJsonArray()){
             JsonObject jsonObjectNested = (JsonObject) element;
-            idList.add(jsonObjectNested.get("id").toString());
+            String id = (jsonObjectNested.get("id").toString());
+            idList.add(id.replaceAll("\"", ""));
+            System.out.println(id.replaceAll("\"", ""));
         }
-
-        System.out.println(idList.get(0));
 
         return idList;
     }
 
-    public List<String> extractSampleInfoFromJson(JsonArray object) throws JsonParseException{
 
+    /**
+     * extract all the specimen registered for the donor in the database.
+     * Gets information like:
+     *      - the submitted ID, which is the link to the raw-data
+     *      - The raw data type
+     * @param jsonObject
+     * @return
+     * @throws JsonParseException
+     */
+    public List<String> extractSpecimenInfoFromJson(JsonObject jsonObject) throws JsonParseException{
+
+        System.out.println(jsonObject.get("specimen").toString());
+
+        // Get all the specimen extracted from donor (tumor, healthy tissue et)
+        JsonArray specimenList = jsonObject.get("specimen").getAsJsonArray();
+
+        for(JsonElement specimen : specimenList){
+            System.out.println("Submitted ID: " + specimen.getAsJsonObject().get("submittedId"));
+            JsonArray samples = specimen.getAsJsonObject().getAsJsonObject().get("samples").getAsJsonArray();
+            JsonArray availableRawData = samples.get(0).getAsJsonObject().get("availableRawSequenceData").getAsJsonArray();
+
+            if (availableRawData.size() == 0){ // if there is now raw sequence data available
+                continue;
+            } else{
+                for(JsonElement rawData  : availableRawData){
+                    System.out.println("RawData: " + rawData.getAsJsonObject().get("libraryStrategy"));
+                }
+            }
+
+
+        }
+
+        //TODO: Implement additional field extractions
+
+        return null;
+    }
+
+
+    public List<String> extractDonorsFromProject(JsonObject jsonObject) throws JsonParseException{
+
+        List<String> donorList = new ArrayList();
+
+        JsonArray donors = jsonObject.get("hits").getAsJsonArray();
+
+        for (JsonElement donor : donors){
+            String donorID = "";
+            donorID = donor.getAsJsonObject().get("id").toString();
+            if(!donorID.isEmpty()){
+                donorList.add(donorID.replace("\"", ""));
+                System.out.println("donorID: " + donorID);
+            }
+        }
+
+        return donorList;
     }
 
 

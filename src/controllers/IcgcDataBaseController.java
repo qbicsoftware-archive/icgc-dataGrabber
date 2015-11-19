@@ -9,6 +9,7 @@ import models.IcgcDataBaseModel;
 import views.IcgcGrabberView;
 
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -27,10 +28,11 @@ public class IcgcDataBaseController {
         this.view = view;
     }
 
-    public void makeGetRequest(){
+    public void makeGetRequest(String request){
         this.view.printOnConsole("Performing GET request...");
+
         try {
-            getRequest = model.getProjectsFromICGC();
+            getRequest = model.getInfoFromICGC(request);
         } catch (IOException e){
             view.printOnConsole("Sorry, could not execute http GET request");
             view.printErrorMessage(e.toString());
@@ -38,10 +40,16 @@ public class IcgcDataBaseController {
             view.printOnConsole("Sorry, content could not be parsed to JSON");
             view.printErrorMessage(e.toString());
         }
-
-        view.printOnConsole(getRequest.toString());
-
     }
+
+    public List<String> donorIDsfromProject(JsonObject jsonObject){
+        return model.extractDonorsFromProject(jsonObject);
+    }
+
+    public List<String> donorIDsfromProject(){
+        return model.extractDonorsFromProject(this.getRequest);
+    }
+
 
 
 
