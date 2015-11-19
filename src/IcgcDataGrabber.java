@@ -1,5 +1,7 @@
+import com.google.gson.JsonObject;
 import controllers.IcgcDataBaseController;
 import models.IcgcDataBaseModel;
+import models.IcgcDonorModel;
 import views.IcgcGrabberView;
 
 import java.util.List;
@@ -15,7 +17,9 @@ public class IcgcDataGrabber {
 
         IcgcGrabberView view = new IcgcGrabberView();
 
-        IcgcDataBaseController controller = new IcgcDataBaseController(model, view);
+        IcgcDonorModel donorModel = new IcgcDonorModel();
+
+        IcgcDataBaseController controller = new IcgcDataBaseController(model, view, donorModel);
 
         //controller.makeGetRequest("https://dcc.icgc.org:443/api/v1/donors/DO6358?include=specimen");
         controller.makeGetRequest("https://dcc.icgc.org:443/api/v1/projects/OV-AU/donors?size=10000");
@@ -27,6 +31,9 @@ public class IcgcDataGrabber {
             System.out.println("https://dcc.icgc.org:443/api/v1/donors/" + donor + "?include=specimen");
 
             controller.makeGetRequest("https://dcc.icgc.org:443/api/v1/donors/" + donor + "?include=specimen");
+
+            controller.extractSpecimenInfofromJson();
+
             break;
         }
 

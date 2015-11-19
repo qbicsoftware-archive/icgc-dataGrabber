@@ -6,6 +6,7 @@ import com.google.gson.JsonParseException;
 
 import models.IcgcDataBaseModel;
 
+import models.IcgcDonorModel;
 import views.IcgcGrabberView;
 
 import java.io.IOException;
@@ -19,13 +20,16 @@ public class IcgcDataBaseController {
 
     private IcgcDataBaseModel model;
 
+    private IcgcDonorModel donorModel;
+
     private IcgcGrabberView view;
 
     private JsonObject getRequest;
 
-    public IcgcDataBaseController(IcgcDataBaseModel model, IcgcGrabberView view){
+    public IcgcDataBaseController(IcgcDataBaseModel model, IcgcGrabberView view, IcgcDonorModel donorModel){
         this.model = model;
         this.view = view;
+        this.donorModel = donorModel;
     }
 
     public void makeGetRequest(String request){
@@ -48,6 +52,20 @@ public class IcgcDataBaseController {
 
     public List<String> donorIDsfromProject(){
         return model.extractDonorsFromProject(this.getRequest);
+    }
+
+
+    public JsonObject getJSONrequest(){
+        return this.getRequest;
+    }
+
+    public void extractSpecimenInfofromJson(){
+        try{
+            donorModel.extractSpecimenInfoFromJson(this.getRequest);
+        } catch (JsonParseException e){
+            view.printErrorMessage("Parsing of JsonObject failed");
+            view.printErrorMessage(e.toString());
+        }
     }
 
 
