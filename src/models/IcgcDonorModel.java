@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 
 import java.util.List;
 
@@ -12,12 +11,6 @@ import java.util.List;
  * Created by svenfillinger on 12.11.15.
  */
 public class IcgcDonorModel {
-
-    private String donorID;
-
-    private String submittedSpecimenID;
-
-    private String specimenType;
 
 
     /**
@@ -37,7 +30,7 @@ public class IcgcDonorModel {
         JsonArray specimenList = jsonObject.get("specimen").getAsJsonArray();
 
         for(JsonElement specimen : specimenList){
-            System.out.println("Submitted ID: " + specimen.getAsJsonObject().get("submittedId"));
+            System.out.println("Specimen ID: " + specimen.getAsJsonObject().get("id"));
             System.out.println("Type: " + specimen.getAsJsonObject().get("type"));
 
 
