@@ -61,7 +61,7 @@ public class IcgcDataBaseController {
 
     public void extractSpecimenInfofromJson(){
         try{
-            donorModel.extractSpecimenInfoFromJson(this.getRequest);
+            donorModel.extractDonorInfoFromJson(this.getRequest);
         } catch (JsonParseException e){
             view.printErrorMessage("Parsing of JsonObject failed");
             view.printErrorMessage(e.toString());
