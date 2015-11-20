@@ -1,17 +1,18 @@
 package models;
 
 import com.google.gson.*;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 /**
@@ -54,13 +55,14 @@ public class IcgcDataBaseModel {
     public JsonObject getInfoFromICGC(String httpRequestUrl) throws IOException, JsonParseException {
         this.request = new HttpGet(httpRequestUrl);
         this.request.addHeader("User-Agent", USER_AGENT);
+        this.request.addHeader("Connection", HTTP.CONN_KEEP_ALIVE);
 
         HttpResponse response = client.execute(this.request);
 
         JsonParser jsonParser = new JsonParser();
 
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
+        InputStreamReader inputStream = new InputStreamReader(response.getEntity().getContent());
+        BufferedReader reader = new BufferedReader(inputStream);
 
         StringBuilder jsonString = new StringBuilder();
         String currLine = "";
@@ -68,14 +70,14 @@ public class IcgcDataBaseModel {
             jsonString.append(currLine);
         }
 
+        reader.close();
         JsonObject jsonObject = (JsonObject) jsonParser.parse(jsonString.toString());
-
         return jsonObject;
     }
 
 
     /**
-     *
+     * Extract project ids from ICGC
      * @param jsonObject
      * @return
      * @throws JsonParseException
@@ -94,9 +96,12 @@ public class IcgcDataBaseModel {
     }
 
 
-
-
-
+    /**
+     * Extract the donor ids from a project (JsonObject)
+     * @param jsonObject
+     * @return
+     * @throws JsonParseException
+     */
     public List<String> extractDonorsFromProject(JsonObject jsonObject) throws JsonParseException{
 
         List<String> donorList = new ArrayList();

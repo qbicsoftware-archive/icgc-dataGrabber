@@ -31,30 +31,38 @@ public class IcgcDonorModel {
      */
     public List<String> extractSpecimenInfoFromJson(JsonObject jsonObject) throws JsonParseException{
 
-        System.out.println(jsonObject.get("specimen").toString());
-
+        //System.out.println(jsonObject.get("specimen").toString());
+        System.out.println("Donor ID: " + jsonObject.get("id"));
         // Get all the specimen extracted from donor (tumor, healthy tissue et)
         JsonArray specimenList = jsonObject.get("specimen").getAsJsonArray();
 
         for(JsonElement specimen : specimenList){
             System.out.println("Submitted ID: " + specimen.getAsJsonObject().get("submittedId"));
-            System.out.println("");
-            JsonArray samples = specimen.getAsJsonObject().getAsJsonObject().get("samples").getAsJsonArray();
-            JsonArray availableRawData = samples.get(0).getAsJsonObject().get("availableRawSequenceData").getAsJsonArray();
+            System.out.println("Type: " + specimen.getAsJsonObject().get("type"));
 
-            if (availableRawData.size() == 0){ // if there is now raw sequence data available
-                continue;
-            } else{
-                for(JsonElement rawData  : availableRawData){
-                    System.out.println("RawData: " + rawData.getAsJsonObject().get("libraryStrategy"));
+
+            JsonArray samples = specimen.getAsJsonObject().getAsJsonObject().get("samples").getAsJsonArray();
+
+            for(JsonElement sample : samples){
+                JsonArray availableRawData = sample.getAsJsonObject().get("availableRawSequenceData").getAsJsonArray();
+                System.out.println("\tanalyzed ID: " + sample.getAsJsonObject().get("analyzedId"));
+                if (availableRawData.size() == 0){ // if there is now raw sequence data available
+                    continue;
+                } else{
+                    for(JsonElement rawData  : availableRawData){
+                        System.out.println("\tRawData: " + rawData.getAsJsonObject().get("libraryStrategy"));
+                    }
                 }
+
             }
 
 
         }
 
-        //TODO: Implement additional field extractions
 
+
+        //TODO: Implement additional field extractions
+        System.out.println("--------------------------------------");
         return null;
     }
 }

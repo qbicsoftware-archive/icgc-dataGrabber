@@ -1,6 +1,5 @@
 package controllers;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
@@ -37,6 +36,7 @@ public class IcgcDataBaseController {
 
         try {
             getRequest = model.getInfoFromICGC(request);
+            view.printOnConsole("Request was successfull");
         } catch (IOException e){
             view.printOnConsole("Sorry, could not execute http GET request");
             view.printErrorMessage(e.toString());

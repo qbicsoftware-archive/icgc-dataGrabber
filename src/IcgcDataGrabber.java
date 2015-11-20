@@ -5,6 +5,7 @@ import models.IcgcDonorModel;
 import views.IcgcGrabberView;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by svenfillinger on 29.10.15.
@@ -34,7 +35,7 @@ public class IcgcDataGrabber {
 
             controller.extractSpecimenInfofromJson();
 
-            break;
+
         }
 
     }
