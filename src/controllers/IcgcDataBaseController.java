@@ -6,9 +6,12 @@ import com.google.gson.JsonParseException;
 import models.IcgcDataBaseModel;
 
 import models.IcgcDonorModel;
+import models.donor.Donor;
 import views.IcgcGrabberView;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 
@@ -16,6 +19,8 @@ import java.util.List;
  * Created by svenfillinger on 29.10.15.
  */
 public class IcgcDataBaseController {
+
+    private BufferedWriter log;
 
     private IcgcDataBaseModel model;
 
@@ -29,14 +34,21 @@ public class IcgcDataBaseController {
         this.model = model;
         this.view = view;
         this.donorModel = donorModel;
+        this.log = new BufferedWriter(new OutputStreamWriter(System.out), 100*1024);
     }
 
+
+    public void setOutputBuffer(BufferedWriter outputBuffer){
+        this.log = outputBuffer;
+    }
+
+
     public void makeGetRequest(String request){
-        this.view.printOnConsole("Performing GET request...");
+        //this.view.printOnConsole("Performing GET request...");
 
         try {
             getRequest = model.getInfoFromICGC(request);
-            view.printOnConsole("Request was successfull");
+            log.write("Request was successfull\n");
         } catch (IOException e){
             view.printOnConsole("Sorry, could not execute http GET request");
             view.printErrorMessage(e.toString());
@@ -59,13 +71,20 @@ public class IcgcDataBaseController {
         return this.getRequest;
     }
 
-    public void extractSpecimenInfofromJson(){
+    public Donor extractSpecimenInfofromJson(){
         try{
-            donorModel.extractDonorInfoFromJson(this.getRequest);
+            Donor donor = donorModel.extractDonorInfoFromJson(this.getRequest, this.log);
+            return donor;
+
         } catch (JsonParseException e){
             view.printErrorMessage("Parsing of JsonObject failed");
             view.printErrorMessage(e.toString());
         }
+        return null;
+    }
+
+    public BufferedWriter getOutputStream(){
+        return this.log;
     }
 
 

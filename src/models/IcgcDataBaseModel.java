@@ -89,7 +89,6 @@ public class IcgcDataBaseModel {
             JsonObject jsonObjectNested = (JsonObject) element;
             String id = (jsonObjectNested.get("id").toString());
             idList.add(id.replaceAll("\"", ""));
-            System.out.println(id.replaceAll("\"", ""));
         }
 
         return idList;
@@ -113,7 +112,6 @@ public class IcgcDataBaseModel {
             donorID = donor.getAsJsonObject().get("id").toString();
             if(!donorID.isEmpty()){
                 donorList.add(donorID.replace("\"", ""));
-                System.out.println("donorID: " + donorID);
             }
         }
 

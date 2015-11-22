@@ -6,8 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import models.donor.Donor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 /**
  * Created by svenfillinger on 12.11.15.
@@ -24,12 +24,14 @@ public class IcgcDonorModel {
      * @return
      * @throws JsonParseException
      */
-    public Donor extractDonorInfoFromJson(JsonObject jsonObject) throws JsonParseException{
+    public Donor extractDonorInfoFromJson(JsonObject jsonObject, BufferedWriter log) throws JsonParseException{
         // initiate a donor
         Donor donor = new Donor();
 
+        StringBuilder info = new StringBuilder();
+
         //System.out.println(jsonObject.get("specimen").toString());
-        System.out.println("Donor ID: " + jsonObject.get("id"));
+        info.append("Donor ID: " + jsonObject.get("id") + "\n");
         donor.setDonorID(jsonObject.get("id").toString());
         // Get all the specimen extracted from donor (tumor, healthy tissue et)
         JsonArray specimenList = jsonObject.get("specimen").getAsJsonArray();
@@ -40,8 +42,8 @@ public class IcgcDonorModel {
             specimenDonor.setSpecimenID(specimen.getAsJsonObject().get("id").toString());
             specimenDonor.setSpecimenType(specimen.getAsJsonObject().get("type").toString());
 
-            System.out.println("Specimen ID: " + specimen.getAsJsonObject().get("id"));
-            System.out.println("Type: " + specimen.getAsJsonObject().get("type"));
+            info.append("Specimen ID: " + specimen.getAsJsonObject().get("id") + "\n");
+            info.append("Type: " + specimen.getAsJsonObject().get("type") + "\n");
 
             // Now get for every specimen the samples taken
             JsonArray samples = specimen.getAsJsonObject().getAsJsonObject().get("samples").getAsJsonArray();
@@ -54,7 +56,7 @@ public class IcgcDonorModel {
                 sampleDonor.setSampleID(sample.getAsJsonObject().get("id").toString());
                 sampleDonor.setAnalysedID(sample.getAsJsonObject().get("analyzedId").toString());
 
-                System.out.println("\tanalyzed ID: " + sample.getAsJsonObject().get("analyzedId"));
+                info.append("\tanalyzed ID: " + sample.getAsJsonObject().get("analyzedId") + "\n");
 
 
                 if (availableRawData.size() == 0){ // if there is now raw sequence data available
@@ -62,7 +64,7 @@ public class IcgcDonorModel {
                 } else{
                     for(JsonElement rawData  : availableRawData){
                         Donor.AnalysisLibrary library = new Donor.AnalysisLibrary(rawData.getAsJsonObject().get("libraryStrategy").toString());
-                        System.out.println("\tRawData: " + rawData.getAsJsonObject().get("libraryStrategy"));
+                        info.append("\tRawData: " + rawData.getAsJsonObject().get("libraryStrategy") + "\n");
                         sampleDonor.addLibraryToList(library);
                     }
                 }
@@ -71,7 +73,14 @@ public class IcgcDonorModel {
             donor.addSpecimen(specimenDonor);
         }
         //TODO: Implement additional field extractions
-        System.out.println("--------------------------------------");
+        info.append("--------------------------------------\n");
+
+        try{
+            log.write(info.toString());
+        } catch (IOException e){
+            System.err.println("IO Exception while writing information to log.");
+        }
+
         return donor;
     }
 }
