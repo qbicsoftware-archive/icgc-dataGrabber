@@ -10,7 +10,7 @@ import views.IcgcGrabberView;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.qwizard.QWizardRowFactory;
+
 
 /**
  * Created by svenfillinger on 29.10.15.
