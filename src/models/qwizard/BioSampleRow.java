@@ -9,10 +9,12 @@ public class BioSampleRow extends AbstractQWizardRow {
 
     private final String SAMPLE_TYPE = "Q_BIOLOGICAL_SAMPLE";
 
+    private final String EXPERIMENT_TYPE = "QICGCE2";
+
     public BioSampleRow(BarcodeProducer barcodeFactory) {
         super(barcodeFactory);
         this.setSampleType(SAMPLE_TYPE);
-        this.setExperiment("QICGCE2");
+        this.setExperiment(EXPERIMENT_TYPE);
     }
 
 

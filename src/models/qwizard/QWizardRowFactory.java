@@ -1,5 +1,6 @@
 package models.qwizard;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import models.barcode.BarcodeProducer;
 
 /**
@@ -9,18 +10,26 @@ public class QWizardRowFactory {
 
     private final BarcodeProducer barcodeFactory = BarcodeProducer.getInstance("QICGC", 1, 'A');
 
-    public AbstractQWizardRow getWizardRow(String rowType){
-        if(rowType == null){
-            return null;
+    public AbstractQWizardRow getWizardRow(RowTypes rowType) {
+        AbstractQWizardRow requestedRowType;
+        switch (rowType){
+            case ENTITY:
+                requestedRowType = new EntityRow(barcodeFactory);
+                break;
+            case BIO_SAMPLE:
+                requestedRowType = new BioSampleRow(barcodeFactory);
+                break;
+            case TEST_SAMPLE:
+                requestedRowType = new TestSampleRow(barcodeFactory);
+                break;
+            case SINGLE_SAMPLE_RUN:
+                requestedRowType = new SingleSampleRunRow(barcodeFactory);
+                break;
+            default:
+                requestedRowType = null;
+                break;
         }
-        if(rowType.equalsIgnoreCase("ENTITY")){
-            return new EntityRow(barcodeFactory);
-        }
-        if(rowType.equalsIgnoreCase("BIO_SAMPLE")){
-            return new BioSampleRow(barcodeFactory);
-        }
-
-        return null;
+        return requestedRowType;
     }
 
 }

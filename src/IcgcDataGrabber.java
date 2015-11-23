@@ -1,4 +1,5 @@
 
+import com.sun.rowset.internal.Row;
 import controllers.IcgcDataBaseController;
 
 import models.IcgcDataBaseModel;
@@ -6,6 +7,7 @@ import models.IcgcDonorModel;
 import models.donor.Donor;
 import models.qwizard.AbstractQWizardRow;
 import models.qwizard.QWizardRowFactory;
+import models.qwizard.RowTypes;
 import views.IcgcGrabberView;
 
 import java.util.ArrayList;
@@ -56,13 +58,13 @@ public class IcgcDataGrabber {
         int donorCounter = 1;
         final String SPACE = "ICGC_CANCER_SPACE";
         for (Donor donor : donorModelList){
-            AbstractQWizardRow entity = qWizardRowFactory.getWizardRow("ENTITY");
+            AbstractQWizardRow entity = qWizardRowFactory.getWizardRow(RowTypes.ENTITY);
             entity.setEntityNumber(donorCounter);
             entity.setSecondaryName(removeQuotes(donor.getDonorID()));
             entity.setSpace(SPACE);
-            System.out.println(entity.toString());
+            System.out.println(entity);
             for (Donor.Specimen specimen : donor.getSpecimenList()){
-                AbstractQWizardRow bioSample = qWizardRowFactory.getWizardRow("BIO_SAMPLE");
+                AbstractQWizardRow bioSample = qWizardRowFactory.getWizardRow(RowTypes.BIO_SAMPLE);
                 bioSample.setEntityNumber();
                 bioSample.setSpace(SPACE);
                 bioSample.setSecondaryName(removeQuotes(specimen.getSpecimenID()));
@@ -70,6 +72,19 @@ public class IcgcDataGrabber {
                 bioSample.setPrimaryTissue(specimen.getSpecimenType());
                 System.out.println(bioSample);
                 for (Donor.Sample sample: specimen.getSampleList()){
+                    AbstractQWizardRow testSample = qWizardRowFactory.getWizardRow(RowTypes.TEST_SAMPLE);
+                    AbstractQWizardRow singleSampleRun = qWizardRowFactory.getWizardRow(RowTypes.SINGLE_SAMPLE_RUN);
+                    testSample.setEntityNumber();
+                    testSample.setSpace(SPACE);
+                    testSample.setSecondaryName(removeQuotes(sample.getSampleID()));
+                    testSample.setParent(bioSample.getEntity());
+                    testSample.setQSampleType(sample.getLibraryTypes());
+                    System.out.println(testSample);
+                    singleSampleRun.setEntityNumber();
+                    singleSampleRun.setSpace(SPACE);
+                    singleSampleRun.setSecondaryName(sample.getAnalysedID());
+                    singleSampleRun.setParent(testSample.getEntity());
+                    System.out.println(singleSampleRun);
 
                 }
 

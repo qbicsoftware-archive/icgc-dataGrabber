@@ -96,6 +96,14 @@ public class Donor {
             this.libraryStrategyList = new ArrayList<>();
         }
 
+        public String getLibraryTypes(){
+            List<String> strings = new ArrayList<>();
+            for (Donor.AnalysisLibrary library : this.libraryStrategyList){
+                strings.add(library.toString());
+            }
+            return String.join("-", strings);
+        }
+
         public void addLibraryToList(AnalysisLibrary lib){
             this.libraryStrategyList.add(lib);
         }
@@ -167,6 +175,11 @@ public class Donor {
 
         public void setLibraryType(String libraryType) {
             this.libraryType = libraryType;
+        }
+
+        @Override
+        public String toString(){
+            return libraryType;
         }
 
     }

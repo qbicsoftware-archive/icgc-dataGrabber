@@ -32,15 +32,15 @@ public class IcgcDonorModel {
 
         //System.out.println(jsonObject.get("specimen").toString());
         info.append("Donor ID: " + jsonObject.get("id") + "\n");
-        donor.setDonorID(jsonObject.get("id").toString());
+        donor.setDonorID(removeQuotes(jsonObject.get("id").toString()));
         // Get all the specimen extracted from donor (tumor, healthy tissue et)
         JsonArray specimenList = jsonObject.get("specimen").getAsJsonArray();
 
         for(JsonElement specimen : specimenList){
             Donor.Specimen specimenDonor = new Donor.Specimen();
 
-            specimenDonor.setSpecimenID(specimen.getAsJsonObject().get("id").toString());
-            specimenDonor.setSpecimenType(specimen.getAsJsonObject().get("type").toString());
+            specimenDonor.setSpecimenID(removeQuotes(specimen.getAsJsonObject().get("id").toString()));
+            specimenDonor.setSpecimenType(removeQuotes(specimen.getAsJsonObject().get("type").toString()));
 
             info.append("Specimen ID: " + specimen.getAsJsonObject().get("id") + "\n");
             info.append("Type: " + specimen.getAsJsonObject().get("type") + "\n");
@@ -53,8 +53,8 @@ public class IcgcDonorModel {
 
                 JsonArray availableRawData = sample.getAsJsonObject().get("availableRawSequenceData").getAsJsonArray();
 
-                sampleDonor.setSampleID(sample.getAsJsonObject().get("id").toString());
-                sampleDonor.setAnalysedID(sample.getAsJsonObject().get("analyzedId").toString());
+                sampleDonor.setSampleID(removeQuotes(sample.getAsJsonObject().get("id").toString()));
+                sampleDonor.setAnalysedID(removeQuotes(sample.getAsJsonObject().get("analyzedId").toString()));
 
                 info.append("\tanalyzed ID: " + sample.getAsJsonObject().get("analyzedId") + "\n");
 
@@ -63,7 +63,7 @@ public class IcgcDonorModel {
                     continue;
                 } else{
                     for(JsonElement rawData  : availableRawData){
-                        Donor.AnalysisLibrary library = new Donor.AnalysisLibrary(rawData.getAsJsonObject().get("libraryStrategy").toString());
+                        Donor.AnalysisLibrary library = new Donor.AnalysisLibrary(removeQuotes(rawData.getAsJsonObject().get("libraryStrategy").toString()));
                         info.append("\tRawData: " + rawData.getAsJsonObject().get("libraryStrategy") + "\n");
                         sampleDonor.addLibraryToList(library);
                     }
@@ -82,5 +82,9 @@ public class IcgcDonorModel {
         }
 
         return donor;
+    }
+
+    private String removeQuotes(String string){
+        return string.replaceAll("\"", "");
     }
 }

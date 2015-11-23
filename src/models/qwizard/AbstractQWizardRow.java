@@ -14,12 +14,8 @@ public abstract class AbstractQWizardRow{
     protected BarcodeProducer barcodeFactory;
 
     public AbstractQWizardRow(BarcodeProducer barcodeFactory){
-        this.columnFields = Arrays.asList(new String[11]);
+        this.columnFields = Arrays.asList(new String[12]);
         this.barcodeFactory = barcodeFactory;
-    }
-
-    public String getIdentifier(){
-        return this.columnFields.get(0);
     }
 
     public void setEntityNumber() {
@@ -66,7 +62,9 @@ public abstract class AbstractQWizardRow{
         this.columnFields.set(10, string);
     }
 
-
+    public void setQSampleType(String string){
+        this.columnFields.set(11, string);
+    }
 
 
     public String toString(){
