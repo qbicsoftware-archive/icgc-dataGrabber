@@ -1,4 +1,4 @@
-package models.Barcode;
+package models.barcode;
 
 
 /**

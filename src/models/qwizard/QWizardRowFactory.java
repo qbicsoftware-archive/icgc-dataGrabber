@@ -1,6 +1,6 @@
 package models.qwizard;
 
-import models.Barcode.BarcodeProducer;
+import models.barcode.BarcodeProducer;
 
 /**
  * Created by fillinger on 11/22/15.

@@ -1,6 +1,6 @@
 package models.qwizard;
 
-import models.Barcode.BarcodeProducer;
+import models.barcode.BarcodeProducer;
 
 import java.util.Arrays;
 import java.util.List;
