@@ -4,7 +4,7 @@ import controllers.IcgcDataBaseController;
 import models.IcgcDataBaseModel;
 import models.IcgcDonorModel;
 import models.donor.Donor;
-import models.qwizard.QWizardRow;
+import models.qwizard.AbstractQWizardRow;
 import models.qwizard.QWizardRowFactory;
 import views.IcgcGrabberView;
 
@@ -51,16 +51,29 @@ public class IcgcDataGrabber {
         /*
         Iterate over every Donor object and parse it to QWizard style :)
          */
-        List<QWizardRow> qWizardRowList = new ArrayList<>();
+        List<AbstractQWizardRow> qWizardRowList = new ArrayList<>();
         QWizardRowFactory qWizardRowFactory = new QWizardRowFactory();
         int donorCounter = 1;
+        final String SPACE = "ICGC_CANCER_SPACE";
         for (Donor donor : donorModelList){
-            QWizardRow entity = qWizardRowFactory.getWizardRow("ENTITY");
+            AbstractQWizardRow entity = qWizardRowFactory.getWizardRow("ENTITY");
             entity.setEntityNumber(donorCounter);
             entity.setSecondaryName(removeQuotes(donor.getDonorID()));
-            entity.setSpace("ICGC_CANCER_SPACE");
+            entity.setSpace(SPACE);
             System.out.println(entity.toString());
+            for (Donor.Specimen specimen : donor.getSpecimenList()){
+                AbstractQWizardRow bioSample = qWizardRowFactory.getWizardRow("BIO_SAMPLE");
+                bioSample.setEntityNumber();
+                bioSample.setSpace(SPACE);
+                bioSample.setSecondaryName(removeQuotes(specimen.getSpecimenID()));
+                bioSample.setParent(entity.getEntity());
+                bioSample.setPrimaryTissue(specimen.getSpecimenType());
+                System.out.println(bioSample);
+                for (Donor.Sample sample: specimen.getSampleList()){
 
+                }
+
+            }
             donorCounter++;
         }
 

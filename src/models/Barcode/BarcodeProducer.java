@@ -4,7 +4,7 @@ package models.Barcode;
 /**
  * Created by fillinger on 11/22/15.
  */
-public class BarcodeFactory{
+public class BarcodeProducer{
 
     private static String _prefix; // i.e. 'QICGC'
 
@@ -12,11 +12,11 @@ public class BarcodeFactory{
 
     private static Character _letterCounter;  // i.e. 'A'
 
-    private static BarcodeFactory barcodeFactory = new BarcodeFactory();
+    private static BarcodeProducer barcodeFactory = new BarcodeProducer();
 
-    private BarcodeFactory(){}
+    private BarcodeProducer(){}
 
-    public static BarcodeFactory initFactory(String prefix, int uniqueID, Character letterCounter){
+    public static BarcodeProducer getInstance(String prefix, int uniqueID, Character letterCounter){
         _prefix = prefix;
         _uniqueID = uniqueID;
         _letterCounter = letterCounter;
