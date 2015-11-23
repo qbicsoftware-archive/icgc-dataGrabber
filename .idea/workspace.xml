@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50521be8-7f31-435e-8278-383a3e106ce2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UML/donorUML.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UML/barcodeProducerUML.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UML/qwizardUML.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/barcode.uml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/donor.uml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/qwizard.uml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="icgcDataGrabber.iws" />
@@ -29,248 +33,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JAVA/models.qwizard" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/models.qwizard">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>models.qwizard</OriginalElement>
-              <nodes>
-                <node x="434.0" y="416.0">models.qwizard.EntityRow</node>
-                <node x="0.0" y="532.0">models.qwizard.QWizardRowFactory</node>
-                <node x="58.0" y="0.0">models.qwizard.AbstractQWizardRow</node>
-                <node x="217.0" y="416.0">models.qwizard.TestSampleRow</node>
-                <node x="0.0" y="416.0">models.qwizard.BioSampleRow</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="models.qwizard.BioSampleRow" target="models.qwizard.AbstractQWizardRow">
-                  <point x="0.0" y="-35.5" />
-                  <point x="98.5" y="391.0" />
-                  <point x="143.83333333333334" y="391.0" />
-                  <point x="-171.66666666666666" y="183.0" />
-                </edge>
-                <edge source="models.qwizard.TestSampleRow" target="models.qwizard.AbstractQWizardRow">
-                  <point x="0.0" y="-35.5" />
-                  <point x="0.0" y="183.0" />
-                </edge>
-                <edge source="models.qwizard.EntityRow" target="models.qwizard.AbstractQWizardRow">
-                  <point x="0.0" y="-35.5" />
-                  <point x="532.5" y="391.0" />
-                  <point x="487.16666666666663" y="391.0" />
-                  <point x="171.66666666666663" y="183.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.9" x="51.666666666666686" y="238.66666666666669" />
-              <SelectedNodes />
-              <Categories>
-                <Category>Fields</Category>
-                <Category>Inner Classes</Category>
-                <Category>Methods</Category>
-                <Category>Constructors</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
+      <file leaf-file-name="IcgcDataGrabber.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/IcgcDataGrabber.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.036">
+              <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JAVA/models.donor" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/models.donor">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>models.donor</OriginalElement>
-              <nodes>
-                <node x="645.0" y="290.0">models.donor.Donor.Sample</node>
-                <node x="260.0" y="311.0">models.donor.Donor.Specimen</node>
-                <node x="281.5" y="0.0">models.donor.Donor</node>
-                <node x="0.0" y="374.0">models.donor.Donor.AnalysisLibrary</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="models.donor.Donor.AnalysisLibrary" target="models.donor.Donor">
-                  <point x="0.0" y="-67.5" />
-                  <point x="120.0" y="265.0" />
-                  <point x="335.1666666666667" y="265.0" />
-                  <point x="-107.33333333333331" y="120.0" />
-                </edge>
-                <edge source="models.donor.Donor.Specimen" target="models.donor.Donor">
-                  <point x="0.0" y="-130.5" />
-                  <point x="0.0" y="120.0" />
-                </edge>
-                <edge source="models.donor.Donor.Sample" target="models.donor.Donor">
-                  <point x="0.0" y="-151.5" />
-                  <point x="840.0" y="265.0" />
-                  <point x="549.8333333333333" y="265.0" />
-                  <point x="107.33333333333331" y="120.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="266.0" y="358.0" />
-              <SelectedNodes>
-                <node>models.donor.Donor</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Inner Classes</Category>
-                <Category>Fields</Category>
-                <Category>Constructors</Category>
-                <Category>Methods</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="donor.uml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/donor.uml">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>models.donor</OriginalElement>
-              <nodes>
-                <node x="645.0" y="290.0">models.donor.Donor.Sample</node>
-                <node x="260.0" y="311.0">models.donor.Donor.Specimen</node>
-                <node x="281.5" y="0.0">models.donor.Donor</node>
-                <node x="0.0" y="374.0">models.donor.Donor.AnalysisLibrary</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="models.donor.Donor.AnalysisLibrary" target="models.donor.Donor">
-                  <point x="0.0" y="-67.5" />
-                  <point x="120.0" y="265.0" />
-                  <point x="335.1666666666667" y="265.0" />
-                  <point x="-107.33333333333331" y="120.0" />
-                </edge>
-                <edge source="models.donor.Donor.Specimen" target="models.donor.Donor">
-                  <point x="0.0" y="-130.5" />
-                  <point x="0.0" y="120.0" />
-                </edge>
-                <edge source="models.donor.Donor.Sample" target="models.donor.Donor">
-                  <point x="0.0" y="-151.5" />
-                  <point x="840.0" y="265.0" />
-                  <point x="549.8333333333333" y="265.0" />
-                  <point x="107.33333333333331" y="120.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.8" x="259.0" y="373.0" />
-              <SelectedNodes />
-              <Categories>
-                <Category>Constructors</Category>
-                <Category>Fields</Category>
-                <Category>Methods</Category>
-                <Category>Inner Classes</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="donorUML.png" pinned="false" current-in-tab="true">
+      <file leaf-file-name="donorUML.png" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UML/donorUML.png">
           <provider selected="true" editor-type-id="images">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qwizard.uml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/qwizard.uml">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>models.qwizard</OriginalElement>
-              <nodes>
-                <node x="434.0" y="416.0">models.qwizard.EntityRow</node>
-                <node x="0.0" y="532.0">models.qwizard.QWizardRowFactory</node>
-                <node x="58.0" y="0.0">models.qwizard.AbstractQWizardRow</node>
-                <node x="217.0" y="416.0">models.qwizard.TestSampleRow</node>
-                <node x="0.0" y="416.0">models.qwizard.BioSampleRow</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="models.qwizard.BioSampleRow" target="models.qwizard.AbstractQWizardRow">
-                  <point x="0.0" y="-35.5" />
-                  <point x="98.5" y="391.0" />
-                  <point x="143.83333333333334" y="391.0" />
-                  <point x="-171.66666666666666" y="183.0" />
-                </edge>
-                <edge source="models.qwizard.TestSampleRow" target="models.qwizard.AbstractQWizardRow">
-                  <point x="0.0" y="-35.5" />
-                  <point x="0.0" y="183.0" />
-                </edge>
-                <edge source="models.qwizard.EntityRow" target="models.qwizard.AbstractQWizardRow">
-                  <point x="0.0" y="-35.5" />
-                  <point x="532.5" y="391.0" />
-                  <point x="487.16666666666663" y="391.0" />
-                  <point x="171.66666666666663" y="183.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.9" x="52.666666666666686" y="439.6666666666667" />
-              <SelectedNodes>
-                <node>models.qwizard.BioSampleRow</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Constructors</Category>
-                <Category>Fields</Category>
-                <Category>Methods</Category>
-                <Category>Inner Classes</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JAVA/models.barcode" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/models.barcode">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>models.barcode</OriginalElement>
-              <nodes>
-                <node x="0.0" y="0.0">models.barcode.BarcodeProducer</node>
-              </nodes>
-              <notes />
-              <edges />
-              <settings layout="Hierarchic Group" zoom="1.0" x="-172.5" y="17.5" />
-              <SelectedNodes>
-                <node>models.barcode.BarcodeProducer</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Fields</Category>
-                <Category>Constructors</Category>
-                <Category>Methods</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="barcode.uml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/barcode.uml">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>models.barcode</OriginalElement>
-              <nodes>
-                <node x="0.0" y="0.0">models.barcode.BarcodeProducer</node>
-              </nodes>
-              <notes />
-              <edges />
-              <settings layout="Hierarchic Group" zoom="1.0" x="-172.0" y="58.0" />
-              <SelectedNodes>
-                <node>models.barcode.BarcodeProducer</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Constructors</Category>
-                <Category>Fields</Category>
-                <Category>Methods</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
           </provider>
         </entry>
       </file>
@@ -1247,7 +1025,7 @@
       <workItem from="1448013188578" duration="1042000" />
       <workItem from="1448023978331" duration="9199000" />
       <workItem from="1448193311927" duration="14616000" />
-      <workItem from="1448264099254" duration="11691000" />
+      <workItem from="1448264099254" duration="11964000" />
     </task>
     <task id="LOCAL-00001" summary="Finished the project query">
       <created>1446718788623</created>
@@ -1303,11 +1081,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448279633951</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="UML pics">
+      <created>1448279775791</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1448279775791</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72812000" />
+    <option name="totallyTimeSpent" value="73085000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="994" extended-state="6" />
@@ -1361,7 +1145,8 @@
     <MESSAGE value="refactoring&#10;" />
     <MESSAGE value="added QWizzard models&#10;" />
     <MESSAGE value="refactored QWIzzard model&#10;&#10;added first UMLs" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored QWIzzard model&#10;&#10;added first UMLs" />
+    <MESSAGE value="UML pics" />
+    <option name="LAST_COMMIT_MESSAGE" value="UML pics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1728,16 +1513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IcgcDataGrabber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JAVA/">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1817,6 +1592,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/barcode/BarcodeProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/IcgcDataBaseModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="57" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/models.barcode">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>models.barcode</OriginalElement>
+          <nodes>
+            <node x="" y="">models.barcode.BarcodeProducer</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="71.0" y="54.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/models.donor">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>models.donor</OriginalElement>
+          <nodes>
+            <node x="" y="">models.donor.Donor.Sample</node>
+            <node x="" y="">models.donor.Donor.Specimen</node>
+            <node x="" y="">models.donor.Donor</node>
+            <node x="" y="">models.donor.Donor.AnalysisLibrary</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="509.0" y="354.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Inner Classes</Category>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/models.qwizard">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>models.qwizard</OriginalElement>
+          <nodes>
+            <node x="" y="">models.qwizard.EntityRow</node>
+            <node x="" y="">models.qwizard.QWizardRowFactory</node>
+            <node x="" y="">models.qwizard.AbstractQWizardRow</node>
+            <node x="" y="">models.qwizard.TestSampleRow</node>
+            <node x="" y="">models.qwizard.BioSampleRow</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9" x="321.66666666666663" y="234.77777777777777" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Methods</Category>
+            <Category>Constructors</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UML/donorUML.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UML/qwizardUML.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/qwizard/AbstractQWizardRow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1851,253 +1729,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/barcode/BarcodeProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/UML/barcodeProducerUML.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="uml://JAVA/models.qwizard">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>models.qwizard</OriginalElement>
-          <nodes>
-            <node x="434.0" y="416.0">models.qwizard.EntityRow</node>
-            <node x="0.0" y="532.0">models.qwizard.QWizardRowFactory</node>
-            <node x="58.0" y="0.0">models.qwizard.AbstractQWizardRow</node>
-            <node x="217.0" y="416.0">models.qwizard.TestSampleRow</node>
-            <node x="0.0" y="416.0">models.qwizard.BioSampleRow</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="models.qwizard.BioSampleRow" target="models.qwizard.AbstractQWizardRow">
-              <point x="0.0" y="-35.5" />
-              <point x="98.5" y="391.0" />
-              <point x="143.83333333333334" y="391.0" />
-              <point x="-171.66666666666666" y="183.0" />
-            </edge>
-            <edge source="models.qwizard.TestSampleRow" target="models.qwizard.AbstractQWizardRow">
-              <point x="0.0" y="-35.5" />
-              <point x="0.0" y="183.0" />
-            </edge>
-            <edge source="models.qwizard.EntityRow" target="models.qwizard.AbstractQWizardRow">
-              <point x="0.0" y="-35.5" />
-              <point x="532.5" y="391.0" />
-              <point x="487.16666666666663" y="391.0" />
-              <point x="171.66666666666663" y="183.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.9" x="51.666666666666686" y="238.66666666666669" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Inner Classes</Category>
-            <Category>Methods</Category>
-            <Category>Constructors</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/IcgcDataBaseModel.java">
+    <entry file="file://$PROJECT_DIR$/src/IcgcDataGrabber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="57" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.036">
+          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/models.donor">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>models.donor</OriginalElement>
-          <nodes>
-            <node x="645.0" y="290.0">models.donor.Donor.Sample</node>
-            <node x="260.0" y="311.0">models.donor.Donor.Specimen</node>
-            <node x="281.5" y="0.0">models.donor.Donor</node>
-            <node x="0.0" y="374.0">models.donor.Donor.AnalysisLibrary</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="models.donor.Donor.AnalysisLibrary" target="models.donor.Donor">
-              <point x="0.0" y="-67.5" />
-              <point x="120.0" y="265.0" />
-              <point x="335.1666666666667" y="265.0" />
-              <point x="-107.33333333333331" y="120.0" />
-            </edge>
-            <edge source="models.donor.Donor.Specimen" target="models.donor.Donor">
-              <point x="0.0" y="-130.5" />
-              <point x="0.0" y="120.0" />
-            </edge>
-            <edge source="models.donor.Donor.Sample" target="models.donor.Donor">
-              <point x="0.0" y="-151.5" />
-              <point x="840.0" y="265.0" />
-              <point x="549.8333333333333" y="265.0" />
-              <point x="107.33333333333331" y="120.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="266.0" y="358.0" />
-          <SelectedNodes>
-            <node>models.donor.Donor</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Inner Classes</Category>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/models.barcode">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>models.barcode</OriginalElement>
-          <nodes>
-            <node x="0.0" y="0.0">models.barcode.BarcodeProducer</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="-172.5" y="17.5" />
-          <SelectedNodes>
-            <node>models.barcode.BarcodeProducer</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/barcode.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>models.barcode</OriginalElement>
-          <nodes>
-            <node x="0.0" y="0.0">models.barcode.BarcodeProducer</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="-172.0" y="58.0" />
-          <SelectedNodes>
-            <node>models.barcode.BarcodeProducer</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qwizard.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>models.qwizard</OriginalElement>
-          <nodes>
-            <node x="434.0" y="416.0">models.qwizard.EntityRow</node>
-            <node x="0.0" y="532.0">models.qwizard.QWizardRowFactory</node>
-            <node x="58.0" y="0.0">models.qwizard.AbstractQWizardRow</node>
-            <node x="217.0" y="416.0">models.qwizard.TestSampleRow</node>
-            <node x="0.0" y="416.0">models.qwizard.BioSampleRow</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="models.qwizard.BioSampleRow" target="models.qwizard.AbstractQWizardRow">
-              <point x="0.0" y="-35.5" />
-              <point x="98.5" y="391.0" />
-              <point x="143.83333333333334" y="391.0" />
-              <point x="-171.66666666666666" y="183.0" />
-            </edge>
-            <edge source="models.qwizard.TestSampleRow" target="models.qwizard.AbstractQWizardRow">
-              <point x="0.0" y="-35.5" />
-              <point x="0.0" y="183.0" />
-            </edge>
-            <edge source="models.qwizard.EntityRow" target="models.qwizard.AbstractQWizardRow">
-              <point x="0.0" y="-35.5" />
-              <point x="532.5" y="391.0" />
-              <point x="487.16666666666663" y="391.0" />
-              <point x="171.66666666666663" y="183.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.9" x="52.666666666666686" y="439.6666666666667" />
-          <SelectedNodes>
-            <node>models.qwizard.BioSampleRow</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/donor.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>models.donor</OriginalElement>
-          <nodes>
-            <node x="645.0" y="290.0">models.donor.Donor.Sample</node>
-            <node x="260.0" y="311.0">models.donor.Donor.Specimen</node>
-            <node x="281.5" y="0.0">models.donor.Donor</node>
-            <node x="0.0" y="374.0">models.donor.Donor.AnalysisLibrary</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="models.donor.Donor.AnalysisLibrary" target="models.donor.Donor">
-              <point x="0.0" y="-67.5" />
-              <point x="120.0" y="265.0" />
-              <point x="335.1666666666667" y="265.0" />
-              <point x="-107.33333333333331" y="120.0" />
-            </edge>
-            <edge source="models.donor.Donor.Specimen" target="models.donor.Donor">
-              <point x="0.0" y="-130.5" />
-              <point x="0.0" y="120.0" />
-            </edge>
-            <edge source="models.donor.Donor.Sample" target="models.donor.Donor">
-              <point x="0.0" y="-151.5" />
-              <point x="840.0" y="265.0" />
-              <point x="549.8333333333333" y="265.0" />
-              <point x="107.33333333333331" y="120.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.8" x="259.0" y="373.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UML/donorUML.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
   </component>
