@@ -7,7 +7,7 @@ import models.barcode.BarcodeProducer;
  */
 public class SingleSampleRunRow extends AbstractQWizardRow{
 
-    private final String SAMPLE_TYPE = "Q_SINGLE_SAMPLE_RUN";
+    private final String SAMPLE_TYPE = "Q_NGS_SINGLE_SAMPLE_RUN";
 
     private final String EXPERIMENT_TYPE = "QICGCE4";
 
