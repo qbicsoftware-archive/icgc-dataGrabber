@@ -94,7 +94,7 @@ public class IcgcDataGrabber {
             /*
             Parse the shit
              */
-            DonorToQWizardParser.parse(bufferedWriter, donorModelList, "");
+            DonorToQWizardParser.parse(bufferedWriter, donorModelList, "ICGC-data");
 
         } catch (IOException e){
             System.err.println("Could not open/find file: " + filename);

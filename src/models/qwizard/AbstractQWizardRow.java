@@ -68,15 +68,15 @@ public abstract class AbstractQWizardRow{
     }
 
     public void setOrganismId(String string){
-        this.columnFields.set(10, string);
+        this.columnFields.set(9, string);
     }
 
     public void setQSampleType(String string){
-        this.columnFields.set(11, string);
+        this.columnFields.set(10, string);
     }
 
     public String getQSampleType(){
-        return this.columnFields.get(11);
+        return this.columnFields.get(10);
     }
 
 

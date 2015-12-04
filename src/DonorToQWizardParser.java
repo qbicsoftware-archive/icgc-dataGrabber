@@ -2,6 +2,7 @@ import models.donor.Donor;
 import models.qwizard.AbstractQWizardRow;
 import models.qwizard.QWizardRowFactory;
 import models.qwizard.RowTypes;
+import models.qwizard.WizardHeader;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -26,7 +27,10 @@ public class DonorToQWizardParser {
         QWizardRowFactory qWizardRowFactory = new QWizardRowFactory();
 
         int donorCounter = 1;
+        // write the file header
 
+        bufferedWriter.write(WizardHeader.getHeader());
+        bufferedWriter.newLine();
         /*
         Iterate deeply through the donor object and parse it
          */
