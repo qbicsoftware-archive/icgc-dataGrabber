@@ -97,11 +97,18 @@ public class Donor {
         }
 
         public String getLibraryTypes(){
-            List<String> strings = new ArrayList<>();
+            String libraryType = "NOLIB";
             for (Donor.AnalysisLibrary library : this.libraryStrategyList){
-                strings.add(library.toString());
+                String libraryString = library.toString();
+                if(libraryString.contains("RNA-Seq")){
+                    libraryType = "RNA";
+                    break;
+                } else if(libraryString.contains("WXS") || libraryString.contains("WGS")){
+                    libraryType = "DNA";
+                    break;
+                }
             }
-            return String.join("-", strings);
+            return libraryType;
         }
 
         public void addLibraryToList(AnalysisLibrary lib){

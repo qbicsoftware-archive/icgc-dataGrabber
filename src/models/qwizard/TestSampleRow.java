@@ -17,4 +17,6 @@ public class TestSampleRow extends AbstractQWizardRow {
         this.setExperiment(EXPERIMENT_TYPE);
 
     }
+
+
 }

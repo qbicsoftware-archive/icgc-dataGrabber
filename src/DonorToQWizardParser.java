@@ -49,7 +49,14 @@ public class DonorToQWizardParser {
                 bioSample.setSpace(SPACE);
                 bioSample.setSecondaryName(specimen.getSpecimenID());
                 bioSample.setParent(entity.getEntity());
-                bioSample.setPrimaryTissue(specimen.getSpecimenType());
+                bioSample.setTissueDetailed(specimen.getSpecimenType());
+
+                if(specimen.getSpecimenType().contains("tumour")){
+                    bioSample.setPrimaryTissue("TUMOR_TISSUE_UNSPECIFIED");
+                } else if(specimen.getSpecimenType().contains("blood")){
+                    bioSample.setPrimaryTissue("BLOOD_PLASMA");
+                }
+
                 // write row
                 bufferedWriter.write(bioSample.toString());
                 bufferedWriter.newLine();
@@ -66,18 +73,20 @@ public class DonorToQWizardParser {
                     testSample.setSecondaryName(sample.getSampleID());
                     testSample.setParent(bioSample.getEntity());
                     testSample.setQSampleType(sample.getLibraryTypes());
-                    // Set the content for single sample run
-                    singleSampleRun.setEntityNumber();
-                    singleSampleRun.setSpace(SPACE);
-                    singleSampleRun.setSecondaryName(sample.getAnalysedID());
-                    singleSampleRun.setParent(testSample.getEntity());
 
-                    // write both rows
-                    bufferedWriter.write(testSample.toString());
-                    bufferedWriter.newLine();
-                    bufferedWriter.write(testSample.toString());
-                    bufferedWriter.newLine();
+                    if(!testSample.getQSampleType().contains("NOLIB")){
+                        // Set the content for single sample run
+                        singleSampleRun.setEntityNumber();
+                        singleSampleRun.setSpace(SPACE);
+                        singleSampleRun.setSecondaryName(sample.getAnalysedID());
+                        singleSampleRun.setParent(testSample.getEntity());
 
+                        // write both rows
+                        bufferedWriter.write(testSample.toString());
+                        bufferedWriter.newLine();
+                        bufferedWriter.write(singleSampleRun.toString());
+                        bufferedWriter.newLine();
+                    }
                 }
 
             }
