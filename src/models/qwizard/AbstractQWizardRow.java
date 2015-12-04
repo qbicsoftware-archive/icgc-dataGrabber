@@ -24,7 +24,7 @@ public abstract class AbstractQWizardRow{
     }
 
     public void setEntityNumber(int number) {
-        this.columnFields.set(0, "QICGCEntity-" + number);
+        this.columnFields.set(0, "QICGCENTITY-" + number);
     }
 
     public String getEntity(){
