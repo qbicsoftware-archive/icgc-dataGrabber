@@ -69,6 +69,11 @@ public class DonorToQWizardParser {
                 // write row
                 bufferedWriter.write(bioSample.toString());
                 bufferedWriter.newLine();
+
+                // TODO: can be removed, after linus icgc project is finished
+                if(bioSample.getPrimaryTissue().contains("CELL_LINE")){
+                    continue;
+                }
                 /*
                 Iterate through samples
                  */
