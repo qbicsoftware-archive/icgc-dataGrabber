@@ -59,6 +59,8 @@ public class DonorToQWizardParser {
                     bioSample.setPrimaryTissue("TUMOR_TISSUE_UNSPECIFIED");
                 } else if(specimen.getSpecimenType().contains("blood")){
                     bioSample.setPrimaryTissue("BLOOD_PLASMA");
+                } else if(specimen.getSpecimenType().contains("EBV")) {
+                    bioSample.setPrimaryTissue("CELL_LINE");
                 }
 
                 // write row
