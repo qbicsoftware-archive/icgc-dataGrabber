@@ -1,3 +1,4 @@
+import models.barcode.BarcodeProducerObject;
 import models.donor.Donor;
 import models.qwizard.AbstractQWizardRow;
 import models.qwizard.QWizardRowFactory;
@@ -31,6 +32,8 @@ public class DonorToQWizardParser {
 
         bufferedWriter.write(WizardHeader.getHeader());
         bufferedWriter.newLine();
+
+        BarcodeProducerObject extraBarcoder = new BarcodeProducerObject("QICGC", 1, 'W');
         /*
         Iterate deeply through the donor object and parse it
          */
@@ -72,11 +75,29 @@ public class DonorToQWizardParser {
                     AbstractQWizardRow testSample = qWizardRowFactory.getWizardRow(RowTypes.TEST_SAMPLE);
                     AbstractQWizardRow singleSampleRun = qWizardRowFactory.getWizardRow(RowTypes.SINGLE_SAMPLE_RUN);
                     // Set the content for test sample
-                    testSample.setEntityNumber();
+                    //testSample.setEntityNumber();
                     testSample.setSpace(SPACE);
                     testSample.setSecondaryName(sample.getSampleID());
                     testSample.setParent(bioSample.getEntity());
                     testSample.setQSampleType(sample.getLibraryTypes());
+
+                    // TODO: this if-statement can be removed, after Linus' project is fixed and complete
+                    if (bioSample.getPrimaryTissue().equals("BLOOD_PLASMA")){
+                        testSample.setIdentifier(extraBarcoder.getBarcode());
+                        singleSampleRun.setIdentifier(extraBarcoder.getBarcode());
+                        singleSampleRun.setSpace(SPACE);
+                        singleSampleRun.setSecondaryName(sample.getAnalysedID());
+                        singleSampleRun.setParent(testSample.getEntity());
+
+                        // write both rows
+                        bufferedWriter.write(testSample.toString());
+                        bufferedWriter.newLine();
+                        bufferedWriter.write(singleSampleRun.toString());
+                        bufferedWriter.newLine();
+                        continue;
+                    } else{
+                        testSample.setEntityNumber();
+                    }
 
                     if(!testSample.getQSampleType().contains("NOLIB")){
                         // Set the content for single sample run

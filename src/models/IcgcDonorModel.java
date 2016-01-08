@@ -60,7 +60,10 @@ public class IcgcDonorModel {
 
 
                 if (availableRawData.size() == 0){ // if there is now raw sequence data available
-                    continue;
+                    // TODO: Can be removed after Linus' project is fixed
+                    // continue;
+                    sampleDonor.addLibraryToList(new Donor.AnalysisLibrary("WGS"));
+                    info.append("\tDummy library entry for nullary libary objects\n");
                 } else{
                     for(JsonElement rawData  : availableRawData){
                         Donor.AnalysisLibrary library = new Donor.AnalysisLibrary(removeQuotes(rawData.getAsJsonObject().get("libraryStrategy").toString()));

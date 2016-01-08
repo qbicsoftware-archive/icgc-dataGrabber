@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by fillinger on 11/22/15.
+ * @author Sven Fillinger, sven.fillinger@student.uni-tuebingen.de
  */
 public abstract class AbstractQWizardRow{
 
@@ -25,6 +26,10 @@ public abstract class AbstractQWizardRow{
 
     public void setEntityNumber(int number) {
         this.columnFields.set(0, "QICGCENTITY-" + number);
+    }
+
+    public void setIdentifier(String identifier){
+        this.columnFields.set(0, identifier);
     }
 
     public String getEntity(){
@@ -58,6 +63,8 @@ public abstract class AbstractQWizardRow{
     public void setPrimaryTissue(String string){
         this.columnFields.set(6, string);
     }
+
+    public String getPrimaryTissue(){return this.columnFields.get(6);}
 
     public void setTissueDetailed(String string){
         this.columnFields.set(7, string);
